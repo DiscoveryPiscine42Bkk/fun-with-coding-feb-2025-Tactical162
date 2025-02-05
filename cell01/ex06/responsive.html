@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Table</title>
+    <style>
+        /* Reset default margin and padding */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Make the table cover the entire page */
+        .responsive-table {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); 
+            height: 100vh; /* Full viewport height */
+            width: 100vw; /* Full viewport width */
+        }
+
+        /* Style for each cell */
+        .cell {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2vw; /* Responsive font size */
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            border: 2px solid black; /* Border for visibility */
+        }
+
+        /* Assign unique colors to each cell */
+        .cell-1 { background-color: #ff6f61; } /* Coral */
+        .cell-2 { background-color: #6b5b95; } /* Purple */
+        
+    </style>
+</head>
+<body>
+    <div class="responsive-table">
+        <div class="cell cell-1">Bread</div>
+        <div class="cell cell-2">lottory</div>
+        
+    </div>
+</body>
+</html>
