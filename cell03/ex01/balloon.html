@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balloon Animation</title>
+    <style>
+        
+        #balloon {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            border-radius: 50%;
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+
+<div id="balloon"></div>
+
+<script>
+    const balloon = document.getElementById("balloon");
+    let size = 200;
+    let colorIndex = 0;  
+    const colors = ['red', 'green', 'blue'];
+
+    
+    function changeColor() {
+        colorIndex = (colorIndex + 1) % 3;
+        balloon.style.backgroundColor = colors[colorIndex];
+    }
+
+    
+    function shrinkBalloon() {
+        if (size > 200) {
+            size -= 5;
+            balloon.style.width = `${size}px`;
+            balloon.style.height = `${size}px`;
+        }
+
+        
+        colorIndex = (colorIndex - 1 + 3) % 3;
+        balloon.style.backgroundColor = colors[colorIndex];
+    }
+
+    
+    balloon.addEventListener('click', () => {
+        if (size >= 420) {
+            size = 200;  
+            balloon.style.width = `${size}px`;
+            balloon.style.height = `${size}px`;
+        } else {
+            size += 10;
+            balloon.style.width = `${size}px`;
+            balloon.style.height = `${size}px`;
+        }
+        changeColor();
+    });
+
+    
+    balloon.addEventListener('mouseleave', shrinkBalloon);
+</script>
+
+</body>
+</html>
