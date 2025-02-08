@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balloon Animation</title>
+    <style>
+        #balloon {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            border-radius: 50%;
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<div id="balloon"></div>
+
+<script>
+    $(document).ready(function () {
+        let size = 200;
+        let colors = ['red', 'green', 'blue'];
+        let colorIndex = 0;
+
+        function changeColor() {
+            colorIndex = (colorIndex + 1) % colors.length;
+            $("#balloon").css("background-color", colors[colorIndex]);
+        }
+
+        function shrinkBalloon() {
+            if (size > 200) {
+                size -= 5;
+                $("#balloon").css({ width: size + "px", height: size + "px" });
+            }
+            colorIndex = (colorIndex - 1 + colors.length) % colors.length;
+            $("#balloon").css("background-color", colors[colorIndex]);
+        }
+
+        $("#balloon").on("click", function () {
+            if (size > 420) size = 200;
+            else size += 10;
+            $(this).css({ width: size + "px", height: size + "px" });
+            changeColor();
+        });
+
+        $("#balloon").on("mouseleave", shrinkBalloon);
+    });
+</script>
+
+</body>
+</html>
